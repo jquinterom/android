@@ -24,3 +24,8 @@ hs_err_pid*
 
 # IDE IDEA
 Volley/Volleyapirest/.idea/
+Volley/Volleyapirest/app/build.gradle
+Volley/Volleyapirest/build.gradle
+Volley/Volleyapirest/app/build/
+
+
