@@ -32,6 +32,11 @@
             android:layout_gravity="center_horizontal"
             style="@style/Widget.FirebaseUser.TextView"/>
 
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
         <LinearLayout
             android:id="@+id/linearTexts"
             android:layout_width="match_parent"
@@ -39,36 +44,72 @@
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/textTitle">
 
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="18dp"
-            tools:layout_editor_absoluteY="44dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white">
 
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            tools:layout_editor_absoluteX="23dp"
-            tools:layout_editor_absoluteY="97dp" />
+                <EditText
+                    android:id="@+id/etUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white">
+                <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="97dp"
+                android:hint="Password"/>
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
         <LinearLayout
             android:id="@+id/linearButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/linearTexts">
+            android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogIn"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Acceder"
-                style="@style/Widget.FirebaseUser.Button.Next" />
+                android:layout_height="wrap_content"
+                android:text="LogIn"
+                style="@style/Widget.FirebaseUser.Button.Next"
+                android:layout_weight="1"/>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:layout_weight="1"
+                style="@style/Widget.FirebaseUser.Button.Next"/>
 
         </LinearLayout>
     </LinearLayout>
