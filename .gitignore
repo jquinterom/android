@@ -28,4 +28,5 @@ Volley/Volleyapirest/app/build.gradle
 Volley/Volleyapirest/build.gradle
 Volley/Volleyapirest/app/build/
 
-
+# FirebaseUser project
+Firebase/FirebaseUser/.idea/
