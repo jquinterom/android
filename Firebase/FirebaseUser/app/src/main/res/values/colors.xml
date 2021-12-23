@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Firebase colors -->
+    <color name="yellowFirebase">#FFCA28</color>
+    <color name="amberFirebase">#FFA000</color>
+    <color name="orangeFirebase">#F57C00</color>
+    <color name="lightBlueFirebase">#039BE5</color>
+    <color name="BlueFirebase">#2C384A</color>
+    <color name="coralFirebase">#FF8A65</color>
+    <color name="grayFirebase">#ECEFF1</color>
+    <!-- end Firebase colors -->
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.FirebaseUser.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline1</item>
+        <item name="android:textSize">@dimen/textTitle</item>
+    </style>
+
+    <style name="Widget.FirebaseUser.Button.Next" parent="">
+        <item name="android:background">@color/yellowFirebase</item>
+    </style>
+
+</resources>
