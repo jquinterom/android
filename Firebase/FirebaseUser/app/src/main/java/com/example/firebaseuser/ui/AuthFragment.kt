@@ -1,21 +1,22 @@
 package com.example.firebaseuser.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.firebaseuser.FirebaseService.FirebaseService
 import com.example.firebaseuser.R
 import com.example.firebaseuser.databinding.FragmentAuthBinding
 import com.example.firebaseuser.model.UserViewModel
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 /**
  * A simple [Fragment] subclass.
@@ -23,13 +24,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class AuthFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-
     private var _binding: FragmentAuthBinding? = null
-
     private val binding get() = _binding!!
 
     // ViewModel
@@ -38,8 +33,7 @@ class AuthFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -61,28 +55,42 @@ class AuthFragment : Fragment() {
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AuthFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AuthFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    // Log in whit Firebase
+    fun signIn(){
+        val logIn = FirebaseService.signIn(binding.etUserEmail.text.toString(), binding.etPassword.text.toString())
+        if (logIn){
+            showHome()
+        } else{
+            showAlert()
+        }
     }
 
-    // Log in whit Firebase
-    fun logIn(){
+    // Register user information
+    fun registerUser(){
+
+        val process = FirebaseService.registerUser(binding.etUserEmail.text.toString(), binding.etPassword.text.toString())
+        if(process){
+            // Login success
+            showHome()
+        } else {
+            showAlert()
+        }
+    }
+
+    // Show alert for user
+    private fun showAlert(){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Error")
+        builder.setMessage("Se ha producido un error autenticando al usuario")
+        builder.setPositiveButton("Aceptar", null)
+        val dialog : AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    // Navigate to HomeFragment
+    private fun showHome(){
         findNavController().navigate(R.id.action_authFragment_to_homeFragment)
     }
+
+
 }

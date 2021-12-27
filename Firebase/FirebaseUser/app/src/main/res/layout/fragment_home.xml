@@ -1,14 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.firebaseuser.model.UserViewModel" />
+
+        <variable
+            name="homeFragment"
+            type="com.example.firebaseuser.ui.HomeFragment" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/fragmentHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.HomeFragment"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp">
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/layoutProperties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentHome">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white">
+
+                <EditText
+                    android:id="@+id/etUserEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white">
+
+                <EditText
+                    android:id="@+id/etUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_user_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white">
+
+                <EditText
+                    android:id="@+id/etUserAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/layoutProperties">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                style="@style/Widget.FirebaseUser.Button.Next"
+                android:layout_weight="1"
+                android:onClick="@{() -> homeFragment.updateUser()}"/>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="2dp"
+                android:layout_height="match_parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegister"
+                style="@style/Widget.FirebaseUser.Button.Next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Logout"
+                android:onClick="@{() -> homeFragment.logOut()}"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>
