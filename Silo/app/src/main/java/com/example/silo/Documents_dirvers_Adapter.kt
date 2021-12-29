@@ -9,13 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.core.content.ContextCompat.startActivity
-
-
-
 
 class Documents_dirvers_Adapter (private val mDocuments: List<Document>) : RecyclerView.Adapter<Documents_dirvers_Adapter.ViewHolder>(){
 
@@ -26,8 +24,7 @@ class Documents_dirvers_Adapter (private val mDocuments: List<Document>) : Recyc
         // Your holder should contain and initialize a member variable
         // for any view that will be set as you render a row
         val txtName: TextView = itemView.findViewById(R.id.txtName)
-        val imageView: ImageView = itemView.findViewById(R.id.imageView)
-
+        val cardView: CardView = itemView.findViewById(R.id.cardView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,13 +43,12 @@ class Documents_dirvers_Adapter (private val mDocuments: List<Document>) : Recyc
         // Get the data model based on position
         val document: Document = mDocuments[position]
         val txtName = holder.txtName
-        val imageView  = holder.imageView
+        val cardView  = holder.cardView
 
         // Set item views based on your views and data model
         txtName.text = document.name
 
-        imageView.setOnClickListener {
-
+        cardView.setOnClickListener {
             startActivity(
                 context!!,
                 Intent(
@@ -61,12 +57,9 @@ class Documents_dirvers_Adapter (private val mDocuments: List<Document>) : Recyc
                 ), null
             )
         }
-
     }
 
     override fun getItemCount(): Int {
         return mDocuments.size
     }
-
-
 }
